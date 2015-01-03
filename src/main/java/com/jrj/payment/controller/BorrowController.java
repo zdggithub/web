@@ -53,6 +53,7 @@ public class BorrowController {
     public @ResponseBody String insertBorrow1(Borrow bw,HttpServletRequest res) throws Exception {
     	System.out.println("ddddd");
     	System.out.println("ddddd");
+    	System.out.println("ddddd");
 //    	System.out.println(bw.getTitle());
     	bw.setUserId("276347623");
     	res.setAttribute("borrow", BorrowService.insertBorrow(bw));
