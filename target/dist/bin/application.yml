@@ -1,0 +1,16 @@
+jdbc:
+driver: com.mysql.jdbc.Driver
+server:
+  port: 8081
+spring:
+  profiles:
+    active: dev
+    
+---
+
+spring:
+  profiles: dev
+jdbc:
+  url: jdbc:mysql://127.0.0.1:3306/daidonghn?autoReconnect=true
+  username: root
+  password: 

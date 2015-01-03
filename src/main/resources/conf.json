@@ -1,0 +1,46 @@
+{
+    "dbcps":{
+        "pay":
+            {
+                "DriverClassName":"com.mysql.jdbc.Driver",
+                "Url":"jdbc:mysql://127.0.0.1:3306/jrj_pay?useUnicode=true&characterEncoding=utf8",
+                "Username":"root",
+                "Password":"",
+                "InitialSize":2,
+                "MinIdle":2,
+                "MaxIdle":100,
+                "MaxWait":400,
+                "MaxActive":2,
+                "OtherProps":{"TestOnBorrow":true, "ValidationQuery":"select 1 "}
+            },
+            
+        "borrow":
+            {
+                "DriverClassName":"com.mysql.jdbc.Driver",
+                "Url":"jdbc:mysql://127.0.0.1:3306/p2p?useUnicode=true&characterEncoding=utf8",
+                "Username":"root",
+                "Password":"",
+                "InitialSize":2,
+                "MinIdle":2,
+                "MaxIdle":100,
+                "MaxWait":400,
+                "MaxActive":2,
+                "OtherProps":{"TestOnBorrow":true, "ValidationQuery":"select 1 "}
+            },
+            
+        "daikuan":
+        {
+            "DriverClassName":"com.mysql.jdbc.Driver",
+            "Url":"jdbc:mysql://127.0.0.1:3306/daidonghn?useUnicode=true&characterEncoding=utf8",
+            "Username":"root",
+            "Password":"",
+            "InitialSize":2,
+            "MinIdle":2,
+            "MaxIdle":100,
+            "MaxWait":400,
+            "MaxActive":2,
+            "OtherProps":{"TestOnBorrow":true, "ValidationQuery":"select 1 "}
+        }
+    }
+    
+}
