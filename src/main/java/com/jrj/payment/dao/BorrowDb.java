@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import j.d.XDB;
 import j.u.XList;
+import j.u.XMap;
 
 import com.jrj.payment.model.Borrow;
 
@@ -37,6 +38,18 @@ public class BorrowDb extends XDB {
         db.close();
         return map;
     }
+	
+	private static final String GET_BORROW_ID = "SELECT * FROM borrow where id =?";
+	public static XMap getBorrowById(long id) {
+		XMap map = new XMap();
+		BorrowDb db = new BorrowDb();
+		db.open();
+		db.prepareStatement(GET_BORROW_ID);
+		db.setParameters(new Object[]{id});
+		map = db.querySingleRow();
+		db.close();
+		return map;
+	}
 	
 	private static final String ALTER_BORROW = "SELECT * FROM borrow";
 	public static XList alterBorrow(String product_id) {
@@ -91,6 +104,26 @@ public class BorrowDb extends XDB {
         db.close();
         return res;
     }
+	
+	
+	private static final String UPDATE_STATUS = "UPDATE borrow SET state=state+1 WHERE id=?";
+	
+	public static int updateStatus(long id) {
+		XList map = new XList();
+		BorrowDb db = new BorrowDb();
+		db.open();
+		db.prepareStatement(UPDATE_STATUS);
+		db.setParameters(new Object[]{id});
+		int res = 0;
+		try {
+			res = db.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		db.close();
+		return res;
+	}
 	
 
 }

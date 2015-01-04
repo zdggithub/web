@@ -1,6 +1,7 @@
 package com.jrj.payment.service;
 
 import j.u.XList;
+import j.u.XMap;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,6 +17,10 @@ public class BorrowService {
 	public static XList getBorrow() {
 //		return null;
 		return BorrowDb.getBorrow("");
+	}
+	public static XMap getBorrowById(Long id) {
+//		return null;
+		return BorrowDb.getBorrowById(id);
 	}
 	
 	public static int insertBorrow(Borrow bw) {
@@ -33,5 +38,10 @@ public class BorrowService {
     	bw.setUtime(utime);
     	bw.setId(22L);
 		return BorrowDb.updateBorrow(bw);
+	}
+	
+	public static int updateStatus(long id) {
+		
+		return BorrowDb.updateStatus(id);
 	}
 }

@@ -7,7 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Borrow</title>
 </head>
-
+<style type="text/css"> 
+a.button:hover {
+    padding: 2px 25px;
+    margin-right: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+</style>
+<script type="text/javascript" src="http://js.jrj.com.cn/myjrj/js/jquery.js"></script>
 <body>
  <h1>我的借款</h1>
   <tr>
@@ -30,10 +38,11 @@
    <td>借款目的</td>
    <td>借款说明</td>
    <td>借款状态</td>
+   <td>操作</td>
   </tr>
   
   <c:forEach var="sub" items="${borrow}" >
-   <tr>
+   <tr id="br_<c:out value="${sub.id}" />">
     <td><c:out value="${sub.id}" /></td>
     <td><c:out value="${sub.totalLoan}" />元</td>
     <td><c:out value="${sub.annualRate}" />%</td>
@@ -45,10 +54,49 @@
     <td><c:out value="${sub.title}" /></td>
     <td><c:out value="${sub.purpose}" /></td>
     <td><c:out value="${sub.illustrate}" /></td>
-    <td><c:out value="${sub.state}" /></td>
+    <td class='tdstate'><c:out value="${sub.state}" /></td>
+    <td><a href="javascript:void(0);"  onclick="modifyStatus('<c:out value="${sub.id}" />');">修改</a></td>
    </tr>
   </c:forEach>
  </table> 
  
 </body>
+<script type="text/javascript">
+function modifyStatus(id){
+	var dd = 'br_'+id;
+	//alert($('#'+dd).html());
+	//alert($('#'+dd).find('.tdstate').html());
+	$.ajax({
+		type: "post",
+		url: "/com/updateStatus",
+		data: {'id':id},
+		dataType:"json",
+		timeout:10000,
+		cache: false,
+		beforeSend: function(XMLHttpRequest) {
+		},
+		success: function(data, textStatus) {
+			var ss = data.state;
+			$('#'+dd).find('.tdstate').html(ss);
+		}
+	}); 
+}
+function delete1(id){
+	
+	$.ajax({
+		type: "post",
+		url: queryUrl_,
+		data: queryUrlData.toString(),
+		dataType:"json",
+		timeout:10000,
+		cache: false,
+		beforeSend: function(XMLHttpRequest) {
+		},
+		success: function(data, textStatus) {
+			
+		}
+	});
+}
+</script>
+
 </html>
