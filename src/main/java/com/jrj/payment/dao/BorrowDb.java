@@ -37,18 +37,50 @@ public class BorrowDb extends XDB {
         db.close();
         return map;
     }
+	
+	private static final String ALTER_BORROW = "SELECT * FROM borrow";
+	public static XList alterBorrow(String product_id) {
+		XList map = new XList();
+		BorrowDb db = new BorrowDb();
+		db.open();
+		db.prepareStatement(ALTER_BORROW);
+		db.setParameters(new Object[]{product_id});
+		map = db.queryRows();
+		db.close();
+		return map;
+	}
 
-	private static final String INSERT_BORROW = "INSERT INTO borrow(totalLoan,annualRate,periods,title,purpose,illustrate)VALUES(?,?,?,?,?,?)";
+	private static final String INSERT_BORROW = "INSERT INTO borrow(userId,totalLoan,annualRate,ctime,monthlyRepayment,totalRepayment,periods,title,purpose,illustrate,state)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+
 	public static int insertBorrow(Borrow bw) {
-//	public static XList insertBorrow(List<String>[] arr) {
+		XList map = new XList();
+		BorrowDb db = new BorrowDb();
+		db.open();
+		db.prepareStatement(INSERT_BORROW);
+		db.setParameters(new Object[] { bw.getUserId(), bw.getTotalLoan(),
+				bw.getAnnualRate(), bw.getCtime(), bw.getMonthlyRepayment(),
+				bw.getTotalRepayment(), bw.getPeriods(), bw.getTitle(),
+				bw.getPurpose(), bw.getIllustrate(), bw.getState() });
+		int res = 0;
+		try {
+			res = db.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		db.close();
+		return res;
+	}
+	
+	private static final String UPDATE_BORROW = "UPDATE borrow SET totalLoan=?,annualRate=?,utime=?,monthlyRepayment=?,totalRepayment=?,periods=?,title=?,purpose=?,illustrate=?,state=? WHERE id=?";
+	
+	public static int updateBorrow(Borrow bw) {
 		XList map = new XList();
 		bw.setCtime("");
         BorrowDb db = new BorrowDb();
         db.open();
-        db.prepareStatement(INSERT_BORROW);
-        db.setParameters(new Object[]{bw.getTotalLoan(),bw.getAnnualRate(),bw.getPeriods(),bw.getTitle(),bw.getPurpose(),bw.getIllustrate()});
-//      db.setParameters(new Object[]{arr[8]});
-//        map = db.queryRows();
+        db.prepareStatement(UPDATE_BORROW);
+        db.setParameters(new Object[]{bw.getTotalLoan(),bw.getAnnualRate(),bw.getUtime(),bw.getMonthlyRepayment(),bw.getTotalRepayment(),bw.getPeriods(),bw.getTitle(),bw.getPurpose(),bw.getIllustrate(),bw.getState(),bw.getId()});
         int res = 0;
 		try {
 			res = db.execute();
@@ -59,4 +91,6 @@ public class BorrowDb extends XDB {
         db.close();
         return res;
     }
+	
+
 }

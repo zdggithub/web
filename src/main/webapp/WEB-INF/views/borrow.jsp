@@ -5,46 +5,50 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home</title>
+<title>Borrow</title>
 </head>
 
 <body>
-  <h1 align="center">我的借款</h1>
-  <table border = "1" width = "100%">
+ <h1>我的借款</h1>
   <tr>
-      <td>借款序号</td>
-      <td>借款总额</td>
-      <td>年利率</td>
-      <td>借款创建时间</td>
-      <td>借款期数</td>
-      <td>月还款额</td>
-      <td>总还款额</td>
-      <td>借款标题</td>
-      <td>借款目的</td>
-      <td>借款说明</td>
-      <td>借款状态</td>
+  <td></td>
+  <td><a href="/com/addBorrow" target="_parent">增加借款</a></td>
+  <td></td>
+  <td><a href="/com/updateBorrow" target="_parent">修改借款</a></td>
+  </tr>
+ <table border = "1" width = "100%">
+  <tr>
+   <td>借款序号</td>
+   <td>借款总额</td>
+   <td>年利率</td>
+   <td>借款创建时间</td>
+   <td>借款修改时间</td>
+   <td>借款期数</td>
+   <td>月还款额</td>
+   <td>总还款额</td>
+   <td>借款标题</td>
+   <td>借款目的</td>
+   <td>借款说明</td>
+   <td>借款状态</td>
   </tr>
   
   <c:forEach var="sub" items="${borrow}" >
-  <tr>
-      <td><c:out value="${sub.id}" /></td>
-      <td><c:out value="${sub.totalLoan}" />元</td>
-      <td><c:out value="${sub.annualRate}" />%</td>
-      <td><c:out value="${sub.ctime}" /></td>
-      <td><c:out value="${sub.periods}" />月</td>
-      <td><c:out value="${sub.monthlyRepayment}" />元</td>
-      <td><c:out value="${sub.totalRepayment}" />元</td>
-      <td><c:out value="${sub.title}" /></td>
-      <td><c:out value="${sub.purpose}" /></td>
-      <td><c:out value="${sub.illustrate}" /></td>
-      <td><c:out value="${sub.state}" /></td>
-      
-  </tr>
+   <tr>
+    <td><c:out value="${sub.id}" /></td>
+    <td><c:out value="${sub.totalLoan}" />元</td>
+    <td><c:out value="${sub.annualRate}" />%</td>
+    <td><c:out value="${sub.ctime}" /></td>
+    <td><c:out value="${sub.utime}" /></td>
+    <td><c:out value="${sub.periods}" />月</td>
+    <td><c:out value="${sub.monthlyRepayment}" />元</td>
+    <td><c:out value="${sub.totalRepayment}" />元</td>
+    <td><c:out value="${sub.title}" /></td>
+    <td><c:out value="${sub.purpose}" /></td>
+    <td><c:out value="${sub.illustrate}" /></td>
+    <td><c:out value="${sub.state}" /></td>
+   </tr>
   </c:forEach>
-  
-  <tr>
-  <a href="/com/addBorrow" target="_parent">增加借款</a>
-  </tr>
-  </table>
+ </table> 
+ 
 </body>
 </html>

@@ -12,28 +12,27 @@
   <form action="/com/insertBorrow">
   <h1 align="center">添加借款</h1>
   <table>
-  <tr>
+    <tr>
       <td>借款总额<input name="totalLoan"></input></td>
-  </tr>
-  <tr>
+    </tr>
+    <tr>
       <td>年化利率<input name="annualRate"></input></td>
       <td>借款期数<input name="periods"></input></td>
-  </tr>
-  <tr>
+    </tr>
+    <tr>
       <td>月还款额<input name="monthlyRepayment" ></input></td>
       <td>总还款额<input name="totalRepayment" ></input></td>
-  </tr>
-  <tr>
+    </tr>
+    <tr>
       <td>借款标题<input name="title"></input></td>
       <td>借款目的<input name="purpose"></input></td>
-  </tr>
-  <tr>
+    </tr>
+    <tr>
       <td>借款说明<textarea name="illustrate" clos="100" rows="5" warp="virtual"></textarea></td>
-  </tr>
+    </tr>
   </table>
-      <!-- a href="/com/insertBorrow" target="_blank">确认添加</a -->
-      <input type="submit" value="确认提交"></input>
-      
+    <!-- a href="/com/insertBorrow" target="_blank">确认添加</a -->
+    <input type="submit" value="确认提交"></input>
   </form>
 </body>
 </html>

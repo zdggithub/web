@@ -17,7 +17,21 @@
         "borrow":
             {
                 "DriverClassName":"com.mysql.jdbc.Driver",
-                "Url":"jdbc:mysql://127.0.0.1:3306/p2p?useUnicode=true&characterEncoding=utf8",
+                "Url":"jdbc:mysql://192.168.1.102:3306/p2p?useUnicode=true&characterEncoding=utf8",
+                "Username":"root",
+                "Password":"",
+                "InitialSize":2,
+                "MinIdle":2,
+                "MaxIdle":100,
+                "MaxWait":400,
+                "MaxActive":2,
+                "OtherProps":{"TestOnBorrow":true, "ValidationQuery":"select 1 "}
+            },
+            
+        "manage":
+            {
+                "DriverClassName":"com.mysql.jdbc.Driver",
+                "Url":"jdbc:mysql://192.168.1.102:3306/p2p?useUnicode=true&characterEncoding=utf8",
                 "Username":"root",
                 "Password":"",
                 "InitialSize":2,
